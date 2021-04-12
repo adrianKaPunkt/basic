@@ -5,6 +5,9 @@ namespace app\controllers;
 use app\models\user\PasswordResetRequestForm;
 use app\models\user\ResetPasswordForm;
 use app\models\user\SignupForm;
+use app\models\user\User;
+use app\models\user\UserQuery;
+use app\models\user\UserSearch;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -53,7 +56,12 @@ class UserController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $searchModel = new UserSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider
+        ]);
     }
 
     /**

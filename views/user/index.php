@@ -1,17 +1,32 @@
 <?php
-
+use yii\grid\GridView;
+use yii\helpers\Html;
+/* @var $this yii\web\View */
+/* @var $searchModel app\models\user\UserSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
 ?>
-<?php if(Yii::$app->session->hasFlash('addedUser')) : ?>
-    <div class="info">
-        HURRA - Benutzer angelegt
-    </div>
-<?php endif; ?>
+
 
 <h1>Benutzer</h1>
 
-<div>
-    <a href="user/add"><button class="btn btn-primary">++++</button></a>
-</div>
-<div>
+<div class="table-responsive">
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            [
+                'attribute' => 'id',
+                'contentOptions' => [
+                    'style' => 'width: 60px'
+                ]
+            ],
+            [
+                'attribute' => 'username',
+                'content' => function ($model) {
+                    return \yii\helpers\StringHelper::truncateWords($model->username, 7);
+                }
+            ],
+        ],
+    ]); ?>
 
 </div>

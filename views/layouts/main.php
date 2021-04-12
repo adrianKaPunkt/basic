@@ -67,7 +67,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Mook-Group <?= date('Y') ?></p>
+        <p class="pull-left">&copy; OompaLoompa <?= date('Y') ?></p>
 
         <p class="pull-right"></p>
     </div>
