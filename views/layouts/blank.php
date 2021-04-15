@@ -20,14 +20,14 @@ AppAsset::register($this);
     <?php $this->head() ?>
     <?php $this->registerLinkTag(['rel' => 'icon', 'type' => 'imgage/svg+xml', 'href' => '/img/favicon.svg'])?>
 </head>
-<body class="ol-login-body">
+<body class="oompa-login-body">
 <?php $this->beginBody() ?>
     <div class="container">
         <div class="col-xl-10 col-lg-12 col-md-9">
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
                     <div class="row">
-                        <div class="col-lg-6 d-none d-lg-block ol-login-image"></div>
+                        <div class="col-lg-6 d-none d-lg-block oompa-login-image"></div>
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <?php echo $content ?>

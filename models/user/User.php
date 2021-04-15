@@ -13,7 +13,10 @@ use yii\web\IdentityInterface;
  * @property integer $id
  * @property string $username
  * @property string $firstname
+ * @property string $lastname
  * @property string $email
+ * @property integer $role
+ * @property string $restaurant
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $auth_key
@@ -27,6 +30,12 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 1;
     const STATUS_ACTIVE = 2;
+
+    const RESTAURANT_MSTEAK = 1;
+    const RESTAURANT_IVORY = 2;
+    const RESTAURANT_ZENZA = 3;
+    const RESTAURANT_MONAMIE = 4;
+    const RESTAURANT_FRANZISKA = 5;
 
 
     /**
@@ -71,6 +80,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            ['restaurant', 'in', 'range' => [self::RESTAURANT_MSTEAK, self::RESTAURANT_IVORY, self::RESTAURANT_ZENZA, self::RESTAURANT_MONAMIE, self::RESTAURANT_FRANZISKA]],
         ];
     }
 

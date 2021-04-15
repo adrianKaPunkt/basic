@@ -23,7 +23,7 @@ AppAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <?php $this->registerLinkTag(['rel' => 'icon', 'type' => 'imgage/svg+xml', 'href' => '/img/favicon.svg'])?>
+    <?php $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/svg+xml', 'href' => '/img/favicon.svg'])?>
 </head>
 <body>
 <?php $this->beginBody() ?>

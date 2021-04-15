@@ -21,14 +21,12 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        //'css/sb-admin-2.min.css',
-        'css/oopmpaloompa.css',
+        //'vendor/dataTables/datatables.css',
+        'css/oompaloompa.css',
     ];
     public $js = [
-        'js/sb-admin-2.min.js',
-        'js/jquery-easing/jquery.easing.min.js',
-        //'js/bootstrap/ja/bootstrap.bundle.min.ja',
-        //'js/jquery/jquery.min.js',
+        'vendor/dataTables/datatables.min.js',
+        //'js/oompa.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

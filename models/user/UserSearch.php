@@ -37,7 +37,7 @@ class UserSearch extends User
             'query' => $query,
         ]);
 
-        $dataProvider->sort->defaultOrder = ['username' => SORT_DESC];
+        $dataProvider->sort->defaultOrder = ['username' => SORT_ASC];
 
         $this->load($params);
 
@@ -45,16 +45,14 @@ class UserSearch extends User
             return $dataProvider;
         }
 
+        /*
         // grid filtering conditions
         $query->filterWhere([
             'id' => $this->id,
             'username' => $this->username,
             'firstname' => $this->firstname,
             'email' => $this->email,
-            'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-        ]);
+        ]);*/
 
         return $dataProvider;
     }

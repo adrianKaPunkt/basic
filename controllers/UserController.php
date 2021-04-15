@@ -57,6 +57,7 @@ class UserController extends Controller
     public function actionIndex()
     {
         $searchModel = new UserSearch();
+
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -73,7 +74,7 @@ class UserController extends Controller
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+            Yii::$app->session->setFlash('success', 'Benutzer hinzugefügt!');
             return $this->goHome();
         }
 

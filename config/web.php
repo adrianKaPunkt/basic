@@ -32,15 +32,15 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'useFileTransport' => false,
-            'transport' => [
+            'useFileTransport' => true,
+            /*'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'encryption' => 'ssl',
                 'host' => 'smtp.strato.de',
                 'port' => '465',
                 'username' => 'reservation@grenadine.house',
                 'password' => 'sexpistols1981',
-             ],
+             ],*/
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

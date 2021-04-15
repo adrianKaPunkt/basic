@@ -1,0 +1,20 @@
+table.oompa-table thead .sorting:after,
+table.oompa-table thead .sorting:before,
+table.oompa-table thead .sorting_asc:after,
+table.oompa-table thead .sorting_asc:before,
+table.oompa-table thead .sorting_asc_disabled:after,
+table.oompa-table thead .sorting_asc_disabled:before,
+table.oompa-table thead .sorting_desc:after,
+table.oompa-table thead .sorting_desc:before,
+table.oompa-table thead .sorting_desc_disabled:after,
+table.oompa-table thead .sorting_desc_disabled:before {
+    bottom: .5em;
+}
+
+.restaurantCheck {
+    visibility: hidden;
+}
+
+.roleCheck {
+    visibility: hidden;
+}
