@@ -12,6 +12,9 @@ class SignupForm extends Model
 {
     public $email;
     public $password;
+    public $username;
+    public $firstname;
+    public $lastname;
 
 
     /**
@@ -25,6 +28,9 @@ class SignupForm extends Model
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\app\models\user\User', 'message' => 'This email address has already been taken.'],
+
+            ['username', 'string', 'max' => 15],
+            [['firstname', 'lastname'], 'string', 'max' => '50'],
 
             ['password', 'required'],
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],

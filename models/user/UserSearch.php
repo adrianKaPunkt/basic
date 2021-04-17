@@ -4,6 +4,7 @@
 namespace app\models\user;
 
 
+use app\models\plan\Day;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 

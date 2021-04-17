@@ -8,7 +8,6 @@ use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 
 $this->title = 'Signup';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-signup">
     <h1><?= Html::encode($this->title) ?></h1>
@@ -22,6 +21,14 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $form->field($model, 'email') ?>
 
             <?= $form->field($model, 'password')->passwordInput() ?>
+
+            <?= $form->field($model, 'username')?>
+
+            <?= $form->field($model, 'firstname')?>
+
+            <?= $form->field($model, 'lastname')?>
+
+
 
             <div class="form-group">
                 <?= Html::submitButton('Add', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
