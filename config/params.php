@@ -2,10 +2,10 @@
 
 return [
     'adminEmail' => 'admin@example.com',
-    'senderEmail' => 'info@grenadine.house',
+    'senderEmail' => 'ccb132102e-169024@inbox.mailtrap.io',
     'senderName' => 'OompaLoompa Service',
 
-    'supportEmail' => 'reservation@grenadine.house',
+    'supportEmail' => 'ccb132102e-169024@inbox.mailtrap.io',
 
 
     'user.passwordResetTokenExpire' => 3600,

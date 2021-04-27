@@ -5,6 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'name' => 'Oompaloompa',
     'basePath' => dirname(__DIR__),
     'language' => 'de',
     'bootstrap' => ['log'],
@@ -32,15 +33,14 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'useFileTransport' => true,
-            /*'transport' => [
+            'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'encryption' => 'ssl',
-                'host' => 'smtp.strato.de',
-                'port' => '465',
-                'username' => 'reservation@grenadine.house',
-                'password' => 'sexpistols1981',
-             ],*/
+                'host' => 'smtp.mailtrap.io',
+                'username' => '0028449bc0b93a',
+                'password' => '6d7de58537a811',
+                'port' => '2525',
+                'encryption' => 'tls',
+             ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

@@ -15,8 +15,8 @@ use yii\web\IdentityInterface;
  * @property string $firstname
  * @property string $lastname
  * @property string $email
- * @property integer $role
- * @property string $restaurant
+ * @property integer $role_id
+ * @property string $restaurant_id
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $auth_key
@@ -27,6 +27,12 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+    const ROLE_DIRECTION = 0;
+    const ROLE_BAR = 1;
+    const ROLE_WAITER = 2;
+    const ROLE_RUNNER = 3;
+    const ROLE_SOMELIER = 4;
+
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 1;
     const STATUS_ACTIVE = 2;
@@ -37,6 +43,9 @@ class User extends ActiveRecord implements IdentityInterface
     const RESTAURANT_MONAMIE = 4;
     const RESTAURANT_FRANZISKA = 5;
 
+    public static $restaurants = ['Mook Group', 'M-Steakhouse', 'Ivory Club', 'Zenzakan', 'Mon Amie Maxi', 'Franziska'];
+    public static $roles = ['Leitung', 'Bar', 'Service', 'Foodrunner', 'Sommelier'];
+    public static $statuses = ['gelöscht', 'inaktiv', 'aktiv'];
 
     /**
      * {@inheritdoc}
@@ -80,7 +89,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
-            ['restaurant', 'in', 'range' => [self::RESTAURANT_MSTEAK, self::RESTAURANT_IVORY, self::RESTAURANT_ZENZA, self::RESTAURANT_MONAMIE, self::RESTAURANT_FRANZISKA]],
+            ['restaurant_id', 'in', 'range' => [self::RESTAURANT_MSTEAK, self::RESTAURANT_IVORY, self::RESTAURANT_ZENZA, self::RESTAURANT_MONAMIE, self::RESTAURANT_FRANZISKA]],
         ];
     }
 
@@ -226,5 +235,17 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public function save($runValidation = true, $attributeNames = null)
+    {
+        $transaction = Yii::$app->db->beginTransaction();
+        $ok = parent::save($runValidation, $attributeNames);
+
+        if(!$ok) {
+            $transaction->rollBack();
+        }
+        $transaction->commit();
+        return $ok;
     }
 }

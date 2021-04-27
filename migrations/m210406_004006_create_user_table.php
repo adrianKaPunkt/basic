@@ -15,7 +15,7 @@ class m210406_004006_create_user_table extends Migration
             'firstname' => $this->string(50),
             'lastname' => $this->string(50),
             'email' => $this->string(255)->notNull()->unique(),
-            'role' => $this->tinyInteger(),
+            'role_id' => $this->tinyInteger(),
             'restaurant' => $this->tinyInteger(),
             'password_hash' => $this->string(255)->notNull(),
             'password_reset_token' => $this->string(255),

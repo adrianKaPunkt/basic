@@ -15,6 +15,7 @@ class SignupForm extends Model
     public $username;
     public $firstname;
     public $lastname;
+    public $imageFile;
 
 
     /**

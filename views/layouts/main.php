@@ -37,24 +37,23 @@ AppAsset::register($this);
             'class' => 'fixed-top navbar-expand-lg navbar-dark bg-dark',
         ],
     ]);
+
+    $menuItems[] = ['label' => '+', 'url' => ['/user/add'], 'encode' => false];
+    $menuItems[] = ['label' => 'Benutzer', 'url' => ['/user'], 'encode' => false];
+    if(Yii::$app->user->isGuest) {
+        '';
+    } else {
+        $menuItems[] = [
+            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+            'url' => ['/site/logout'],
+            'linkOptions' => [
+                 'data-method' => 'post',
+            ],
+        ];
+    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav ml-auto'],
-        'items' => [
-            ['label' => '+', 'url' => ['/user/add']],
-            ['label' => 'Benutzer', 'url' => ['/user']],
-            Yii::$app->user->isGuest ?
-                ''
-             : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            ),
-        ],
+        'items' => $menuItems,
     ]);
     NavBar::end();
     ?>

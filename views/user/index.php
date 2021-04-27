@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $searchModel app\models\user\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 $data = $dataProvider->models;
-$dataSize =  count($data);
+$dataSize = count($data);
 $this->registerCssFile('@web/css/oompa-table.css', ['depends' => [yii\bootstrap4\BootstrapAsset::className()]]);
 $this->registerJsFile('@web/js/oompa-userTable.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
@@ -46,8 +46,8 @@ $this->registerJsFile('@web/js/oompa-userTable.js', ['depends' => [\yii\web\Jque
     <?php for($i = 0; $i < $dataSize; $i++) : ?>
     <?php
         $id = $data[$i]->id;
-        $role = $data[$i]->role;
-        $restaurant = $data[$i]->restaurant;
+        $role = $data[$i]->role_id;
+        $restaurant = $data[$i]->restaurant_id;
         $username = $data[$i]->username;
         $firstname = $data[$i]->firstname;
         $email = $data[$i]->email;
@@ -99,7 +99,7 @@ $this->registerJsFile('@web/js/oompa-userTable.js', ['depends' => [\yii\web\Jque
     }
 
     .profileContainer {
-        background-color: #DADBCA;
+        //background-color: #DADBCA;
         width: 100%;
         height: 60px;
         border-radius: 4px;
@@ -163,8 +163,8 @@ $arrMonth = [
     <?php for($i = 0; $i < $dataSize; $i++) : ?>
         <?php
         $id = $data[$i]->id;
-        $role = $data[$i]->role;
-        $restaurant = $data[$i]->restaurant;
+        $role = $data[$i]->role_id;
+        $restaurant = $data[$i]->restaurant_id;
         $username = $data[$i]->username;
         $firstname = $data[$i]->firstname;
         $email = $data[$i]->email;
@@ -223,6 +223,8 @@ $arrMonth = [
     <?php endfor; ?>
     </tbody>
 </table>
+
+<br><br><br><br><br><br><br><br><br><br>
 
 <script>
 

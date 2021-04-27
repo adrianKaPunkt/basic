@@ -6,13 +6,13 @@ use app\models\user\PasswordResetRequestForm;
 use app\models\user\ResetPasswordForm;
 use app\models\user\SignupForm;
 use app\models\user\User;
-use app\models\user\UserQuery;
 use app\models\user\UserSearch;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class UserController extends Controller
 {
@@ -73,6 +73,7 @@ class UserController extends Controller
     public function actionAdd()
     {
         $model = new SignupForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             Yii::$app->session->setFlash('success', 'Benutzer hinzugefügt!');
             return $this->goHome();
