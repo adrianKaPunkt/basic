@@ -53,7 +53,7 @@ $("#crop").click(function() {
             $.ajax({
                 type: "POST",
                 dataType: "json",
-                url: "",
+                url: "upload.php",
                 data: {image: base64data},
                 success: function(data) {
                     bs_modal.modal('hide');

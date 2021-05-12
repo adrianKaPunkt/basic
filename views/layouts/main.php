@@ -38,16 +38,25 @@ AppAsset::register($this);
         ],
     ]);
 
-    $menuItems[] = ['label' => '+', 'url' => ['/user/add'], 'encode' => false];
+    $menuItems[] = ['label' => '+', 'url' => ['/user/create'], 'encode' => false];
     $menuItems[] = ['label' => 'Benutzer', 'url' => ['/user'], 'encode' => false];
     if(Yii::$app->user->isGuest) {
         '';
     } else {
         $menuItems[] = [
-            'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-            'url' => ['/site/logout'],
-            'linkOptions' => [
-                 'data-method' => 'post',
+            'label' => Yii::$app->user->identity->username,
+            'items' => [
+                [
+                    'label' => 'Logout',
+                    'url' => ['/site/logout'],
+                    'linkOptions' => [
+                            'data-method' => 'post',
+                    ],
+                ],
+                [
+                    'label' => 'Profil',
+                    'url' => ['/user/profile'],
+                ],
             ],
         ];
     }

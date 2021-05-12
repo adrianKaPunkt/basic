@@ -36,6 +36,9 @@ class UserSearch extends User
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 20,
+            ]
         ]);
 
         $dataProvider->sort->defaultOrder = ['username' => SORT_ASC];

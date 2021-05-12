@@ -3,13 +3,13 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\user\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 $data = $dataProvider->models;
-$dataSize = count($data);
+$dataSize = $dataProvider->getTotalCount();
 $this->registerCssFile('@web/css/oompa-table.css', ['depends' => [yii\bootstrap4\BootstrapAsset::className()]]);
 $this->registerJsFile('@web/js/oompa-userTable.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
+
 
 <h1>Benutzer</h1>
 

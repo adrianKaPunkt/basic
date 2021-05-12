@@ -6,13 +6,14 @@ use app\models\user\PasswordResetRequestForm;
 use app\models\user\ResetPasswordForm;
 use app\models\user\SignupForm;
 use app\models\user\User;
+use app\models\user\UserAddress;
 use app\models\user\UserSearch;
 use Yii;
+use yii\caching\DummyCache;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
-use yii\web\UploadedFile;
 
 class UserController extends Controller
 {
@@ -70,7 +71,7 @@ class UserController extends Controller
      *
      * @return mixed
      */
-    public function actionAdd()
+    public function actionCreate()
     {
         $model = new SignupForm();
 
@@ -79,9 +80,37 @@ class UserController extends Controller
             return $this->goHome();
         }
 
-        return $this->render('add', [
+        return $this->render('create', [
             'model' => $model,
         ]);
+    }
+
+    public function actionUpdate()
+    {
+        $user = Yii::$app->user->identity;
+        if(!($userAddress = $user->getAddress($user->id))) {
+            $userAddress = new UserAddress();
+            $userAddress->user_id = $user->getId();
+        }
+
+        $user->firstname = Yii::$app->request->post('User')['firstname'];
+        $user->lastname = Yii::$app->request->post('User')['lastname'];
+        $user->email = Yii::$app->request->post('User')['email'];
+        $user->username = Yii::$app->request->post('User')['username'];
+        $user->role_id = Yii::$app->request->post('User')['role_id'];
+        $user->restaurant_id = Yii::$app->request->post('User')['restaurant_id'];
+
+        $userAddress->address = Yii::$app->request->post('UserAddress')['address'];
+        $userAddress->zipcode = Yii::$app->request->post('UserAddress')['zipcode'];
+        $userAddress->city = Yii::$app->request->post('UserAddress')['city'];
+
+        if($user->load(Yii::$app->request->post()) && $user->save() && $userAddress->save()) {
+            Yii::$app->session->setFlash('success', 'Daten geändert');
+            return $this->redirect(['/user/profile']);
+        } else {
+            Yii::$app->session->setFlash('error', 'ERROR');
+            return $this->redirect(['/user/profile']);
+        }
     }
 
     public function actionRequest()
@@ -117,5 +146,24 @@ class UserController extends Controller
         return $this->render('reset', [
             'model' => $model,
         ]);
+    }
+
+    public function actionProfile()
+    {
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+        if(!($userAddress = $user->getAddress($user->id))) {
+            $userAddress = new UserAddress();
+        }
+
+        return $this->render('profile', [
+            'user' => $user,
+            'userAddress' => $userAddress,
+        ]);
+    }
+
+    public function actionUploadUserImage()
+    {
+
     }
 }
