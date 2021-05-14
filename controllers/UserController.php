@@ -9,7 +9,6 @@ use app\models\user\User;
 use app\models\user\UserAddress;
 use app\models\user\UserSearch;
 use Yii;
-use yii\caching\DummyCache;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;

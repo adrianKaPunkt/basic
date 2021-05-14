@@ -10,10 +10,13 @@ use yii\db\ActiveRecord;
  * Class Day
  * @package app\models\plan
  *
+ * @property integer $id
  * @property integer $userid
  * @property \DateTime $date
- * @property Time $from
- * @property Time $until
+ * @property Time $early_from
+ * @property Time $early_until
+ * @property Time $late_from
+ * @property Time $late_until
  * @property integer $status
  * @property integer $type
  */
